@@ -58,9 +58,9 @@ public class Books
     public void findBook()
     {
         int bookId = UI.askInt("Id: ");
-        UI.println(booksMap.get(bookId).getName());
-        
+        UI.println(booksMap.get(bookId).getName());        
     }
+    
     public void printAll()
     {
         // traversing map
