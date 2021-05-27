@@ -11,7 +11,8 @@ public class Book
     // instance variables
     private int id, quantity;
     private String name, author, image;
-    private static final String DEFAULT_IMAGE = "default-book.png";
+    private static final String DEFAULT_IMAGE = "default-book.png";  
+    private double locX, locY;
     
     /**
      * Constructor for objects of class Book

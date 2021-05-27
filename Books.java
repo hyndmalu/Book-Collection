@@ -49,16 +49,31 @@ public class Books
         {
             quantity = UI.askInt("Quantity: ");
         } while (0 > quantity || quantity > MAX_QUANTITY);
-        
+        // add a book image for display in the GUI
+        String imgFileName = UIFileChooser.open("Choose Image File");
         // increment the book id counter and add book to hashmap
         currId++;
-        booksMap.put(currId, new Book(currId, name, author, quantity));
+        booksMap.put(currId, new Book(currId, name, author, quantity, imgFileName));
     }
     
-    public void findBook()
+    public void findBookName(String id)
+    {        
+        int bookId = Integer.valueOf(id);
+        UI.println(booksMap.get(bookId).getName()); // prints book name, print
+        booksMap.get(bookId).displayBook(); // shows cover on gui
+    }
+    
+    public void findBookId(String nm)
     {
-        int bookId = UI.askInt("Id: ");
-        UI.println(booksMap.get(bookId).getName());        
+        String name = nm;
+        for (Book b : booksMap.values())
+        {
+            if (b.getName().equalsIgnoreCase(name))
+            {
+               UI.println();
+            }
+            
+        }
     }
     
     public void printAll()
