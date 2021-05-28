@@ -18,7 +18,8 @@ public class GUI
        Books bk = new Books();
        UI.initialise();
        UI.addButton("Add", bk::addBook);
-       UI.add
+       UI.addTextField("Find a book ID by name", bk::findBookId);
+       UI.addTextField("Find a book name by id", bk::findBookName);
        UI.addButton("Print All", bk::printAll);       
        UI.addButton("Quit", UI::quit);
     }

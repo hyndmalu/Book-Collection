@@ -57,10 +57,20 @@ public class Books
     }
     
     public void findBookName(String id)
-    {        
-        int bookId = Integer.valueOf(id);
-        UI.println(booksMap.get(bookId).getName()); // prints book name, print
-        booksMap.get(bookId).displayBook(); // shows cover on gui
+    {                
+        int bookId = 0;
+        try
+        {
+            bookId = Integer.valueOf(id);            
+        }    
+        catch (Exception e)
+        {
+            UI.print("Please enter an integer");
+        }
+        if (bookId > 0 && bookId < booksMap.size())
+        {
+            UI.println(booksMap.get(bookId).getName());
+        }
     }
     
     public void findBookId(String nm)
@@ -70,9 +80,8 @@ public class Books
         {
             if (b.getName().equalsIgnoreCase(name))
             {
-               UI.println();
-            }
-            
+               UI.println(b.getId());
+            }            
         }
     }
     
@@ -98,6 +107,7 @@ public class Books
         do {
             UI.println("(A)dd a book");
             UI.println("(F)ind a book");
+            UI.println("F(I)nd a book id");
             UI.println("(P)rint all");
             UI.println("(Q)uit");
             
@@ -109,7 +119,11 @@ public class Books
             }
             else if (choice.equalsIgnoreCase("F"))
             {
-                findBook();
+                findBookName(UI.askString("Enter an ID: "));
+            }
+            else if (choice.equalsIgnoreCase("I"))
+            {
+                findBookId(UI.askString("Enter a Name: "));
             }
             else if (choice.equalsIgnoreCase("P"))
             {
